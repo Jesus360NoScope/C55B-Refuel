@@ -1,4 +1,4 @@
-const V='c55b-v7',F=['./','index.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png'];
+const V='c55b-v8',F=['./','index.html','manifest.webmanifest','icon-180.png','icon-192.png','icon-512.png'];
 const O={ignoreSearch:true,ignoreVary:true};
 // Strip redirect flag (browsers refuse redirected responses for page loads); keep only the content type.
 const clean=async r=>r.redirected?new Response(await r.blob(),{status:200,statusText:'OK',headers:{'Content-Type':r.headers.get('content-type')||'text/html'}}):r;

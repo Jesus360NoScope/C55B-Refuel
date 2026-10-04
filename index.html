@@ -125,5 +125,5 @@ function render(skip){
 render();
 const off=$('off');
 if(!('serviceWorker' in navigator))off.textContent='Offline NOT available: '+(location.protocol!=='https:'?'page is not https':'browser blocks it (Private mode?)');
-else navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(async()=>{const k=await (await caches.open('c55b-v7')).keys(),hit=await caches.match(location.href,{ignoreSearch:true,ignoreVary:true});off.textContent=(k.length>=6?'Offline ready \u2713 (v7)':'Offline files incomplete ('+k.length+'/6) - reload once online')+' \u00b7 page cached: '+(hit?'yes':'NO')+' \u00b7 controlled: '+(navigator.serviceWorker.controller?'yes':'no - reload')}).catch(e=>{off.textContent='Offline NOT available: '+e.message});
+else navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(async()=>{const k=await (await caches.open('c55b-v8')).keys(),hit=await caches.match(location.href,{ignoreSearch:true,ignoreVary:true}),ctl=!!navigator.serviceWorker.controller;off.textContent=(k.length>=6&&hit&&ctl)?'Offline ready \u2713 (v8)':'Setting up offline (v8): close the app completely and reopen it once while online to finish.'}).catch(e=>{off.textContent='Offline NOT available: '+e.message});
 </script></body></html>
